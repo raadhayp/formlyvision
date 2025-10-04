@@ -31,3 +31,15 @@ struct AvatarSpeakerApp: App {
         .immersionStyle(selection: .constant(.mixed), in: .mixed)
      }
 }
+
+//
+//import SwiftUI
+//
+//@main
+//struct AvatarSpeakerApp: App {
+//    var body: some Scene {
+//        WindowGroup {
+//            ContentView()
+//        }
+//    }
+//}

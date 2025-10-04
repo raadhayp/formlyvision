@@ -233,7 +233,6 @@ class CircularVideoView: UIView {
         layer.addSublayer(newPlayerLayer)
         playerLayer = newPlayerLayer
 
-        // Start playing
         player.play()
     }
 
@@ -291,25 +290,58 @@ struct WelcomeScreen: View {
                 Spacer()
 
                 // Start Camera button
+//                Button(action: {
+//                    withAnimation(.easeInOut(duration: 0.8)) {
+//                        showVideoScreen = true
+//                    }.background(Color(red: 1.0, green: 0.6, blue: 0.2)) // Orange color
+//
+//                }) {
+//                    HStack(spacing: 12) {
+//                        Image(systemName: "camera.fill")
+//                            .foregroundColor(.white)
+//                            .font(.system(size: 16))
+//
+//                        Text("Start")
+//                            .font(.system(size: 18, weight: .semibold, design: .default))
+//                            .foregroundColor(.white)
+//                    }
+//                    .padding(.horizontal, 32)
+//                    .padding(.vertical, 16)
+//                    .background(Color(red: 1.0, green: 0.6, blue: 0.2)) // Orange color
+//                    .cornerRadius(12)
+//                }
+//                Button(action: {
+//                    withAnimation(.easeInOut(duration: 0.8)) {
+//                        showVideoScreen = true
+//                    }
+//                }) {
+//                    HStack(spacing: 12) {
+//                        Image(systemName: "camera.fill")
+//                            .foregroundColor(.white)
+//                            .font(.system(size: 16))
+//
+//                        Text("Start")
+//                            .font(.system(size: 18, weight: .semibold, design: .default))
+//                            .foregroundColor(.white)
+//                    }
+//                    .padding(.horizontal, 32)
+//                    .padding(.vertical, 16)
+//                    .background(Color(red: 1.0, green: 0.6, blue: 0.2)) // Orange background
+//                    .cornerRadius(12)
+//                }
+//                .buttonStyle(.plain)
+                
                 Button(action: {
                     withAnimation(.easeInOut(duration: 0.8)) {
                         showVideoScreen = true
                     }
                 }) {
-                    HStack(spacing: 12) {
-                        Image(systemName: "camera.fill")
-                            .foregroundColor(.white)
-                            .font(.system(size: 16))
-
-                        Text("Start Camera")
-                            .font(.system(size: 18, weight: .semibold, design: .default))
-                            .foregroundColor(.white)
-                    }
-                    .padding(.horizontal, 32)
-                    .padding(.vertical, 16)
-                    .background(Color(red: 1.0, green: 0.6, blue: 0.2)) // Orange color
-                    .cornerRadius(12)
+                    Label("Start", systemImage: "camera.fill")
+                        .font(.system(size: 18, weight: .semibold))
                 }
+                .buttonStyle(.borderedProminent) // use system rounded shape
+                .tint(Color(red: 1.0, green: 0.6, blue: 0.2)) // make it orange
+                .controlSize(.large) // optional: gives it that smooth rounded large look
 
                 Spacer()
 

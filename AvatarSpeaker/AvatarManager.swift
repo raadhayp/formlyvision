@@ -80,10 +80,10 @@ import AVFoundation
 class AvatarManager: ObservableObject {
     @Published var avatarEntity: Entity?
     private var audioPlayer: AVAudioPlayer?
-    
+
     // 🔹 Config toggle
     private let useMockMessage = true  // TODO: change to false when backend is ready
-    
+
     // 🔹 Multiple mock test phrases
     private var mockMessages = [
         "Hello there! I am your visionOS avatar speaking with ElevenLabs.",
@@ -165,6 +165,7 @@ class AvatarManager: ObservableObject {
                 let amplitude = Float.random(in: 0...0.05)
                 entity.scale = SIMD3<Float>(1, 1 + amplitude, 1)
             }
+
         }
     }
 }

@@ -200,6 +200,11 @@ struct CircularVideoPlayer: UIViewRepresentable {
 
 class CircularVideoView: UIView {
     private var playerLayer: AVPlayerLayer?
+    private var haloLayer: CALayer?
+    private let circleContainer = UIView()
+
+    // Hardcoded test score (1=red, 2=yellow, 3=green)
+    private let score = 3
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -212,35 +217,64 @@ class CircularVideoView: UIView {
     }
 
     private func setupView() {
-        backgroundColor = UIColor.white
-        layer.cornerRadius = 100
-        clipsToBounds = true
+        backgroundColor = .clear
         isUserInteractionEnabled = false
+
+        // --- Halo Layer ---
+        let haloColor: UIColor
+        switch score {
+        case 1: haloColor = .red
+        case 2: haloColor = .yellow
+        case 3: haloColor = .green
+        default: haloColor = .gray
+        }
+
+        let halo = CALayer()
+        halo.frame = bounds
+        halo.cornerRadius = bounds.width / 2
+        halo.backgroundColor = haloColor.withAlphaComponent(0.4).cgColor  // soft tint fill
+        halo.shadowColor = haloColor.cgColor
+        halo.shadowOpacity = 1.0
+        halo.shadowRadius = 25
+        halo.shadowOffset = .zero
+        halo.masksToBounds = false
+
+        layer.addSublayer(halo)
+        haloLayer = halo
+
+        // --- Circle Container (clipped video area) ---
+        circleContainer.frame = bounds
+        circleContainer.backgroundColor = .white
+        circleContainer.layer.cornerRadius = bounds.width / 2
+        circleContainer.clipsToBounds = true
+        addSubview(circleContainer)
     }
 
     func setupPlayer(_ player: AVPlayer) {
-        // Remove existing layer if any
         playerLayer?.removeFromSuperlayer()
 
-        // Create new player layer
         let newPlayerLayer = AVPlayerLayer(player: player)
+        newPlayerLayer.frame = circleContainer.bounds
         newPlayerLayer.videoGravity = .resizeAspect
         newPlayerLayer.isOpaque = true
-        newPlayerLayer.pixelBufferAttributes = [
-            kCVPixelBufferPixelFormatTypeKey as String: kCVPixelFormatType_32BGRA
-        ]
 
-        layer.addSublayer(newPlayerLayer)
+        circleContainer.layer.addSublayer(newPlayerLayer)
         playerLayer = newPlayerLayer
-
         player.play()
     }
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        playerLayer?.frame = bounds
+        haloLayer?.frame = bounds
+        haloLayer?.cornerRadius = bounds.width / 2
+        circleContainer.frame = bounds
+        circleContainer.layer.cornerRadius = bounds.width / 2
+        playerLayer?.frame = circleContainer.bounds
     }
 }
+
+
+
 
 struct ContentView: View {
     @State private var showVideoScreen = false
@@ -410,6 +444,8 @@ struct VideoScreen: View {
                         .onDisappear {
                             suggestionTimer?.invalidate()
                         }
+                        .padding(.top, 25)       // 👈 move down 40 points
+                        .padding(.trailing, 25)  // 👈 move left 40 points
                 }
                 Spacer() // push video to top
             }

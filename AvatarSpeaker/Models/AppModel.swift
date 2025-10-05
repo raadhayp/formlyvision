@@ -2,8 +2,6 @@
 //  AppModel.swift
 //  AvatarSpeaker
 //
-//  Created by Neha S on 04/10/25.
-//
 
 import SwiftUI
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		50A98B9C2E91E284006D15B6 /* Ably in Frameworks */ = {isa = PBXBuildFile; productRef = 50A98B9B2E91E284006D15B6 /* Ably */; };
 		91E616DB2E9172D3002ED050 /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = 91E616DA2E9172D3002ED050 /* RealityKitContent */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50A98B9C2E91E284006D15B6 /* Ably in Frameworks */,
 				91E616DB2E9172D3002ED050 /* RealityKitContent in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -71,12 +73,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		50A98B9A2E91E284006D15B6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		91E616CC2E9172D3002ED050 = {
 			isa = PBXGroup;
 			children = (
 				91E616D72E9172D3002ED050 /* AvatarSpeaker */,
 				91E616D82E9172D3002ED050 /* Packages */,
 				91E616F02E9172D5002ED050 /* AvatarSpeakerTests */,
+				50A98B9A2E91E284006D15B6 /* Frameworks */,
 				91E616D62E9172D3002ED050 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -112,6 +122,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				50A98B992E91E24D006D15B6 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				91E616D72E9172D3002ED050 /* AvatarSpeaker */,
@@ -119,6 +130,7 @@
 			name = AvatarSpeaker;
 			packageProductDependencies = (
 				91E616DA2E9172D3002ED050 /* RealityKitContent */,
+				50A98B9B2E91E284006D15B6 /* Ably */,
 			);
 			productName = AvatarSpeaker;
 			productReference = 91E616D52E9172D3002ED050 /* AvatarSpeaker.app */;
@@ -175,6 +187,9 @@
 			);
 			mainGroup = 91E616CC2E9172D3002ED050;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				50A98B772E91DA94006D15B6 /* XCRemoteSwiftPackageReference "ably-cocoa" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 91E616D62E9172D3002ED050 /* Products */;
 			projectDirPath = "";
@@ -221,6 +236,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		50A98B992E91E24D006D15B6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 50A98B982E91E24D006D15B6 /* Ably */;
+		};
 		91E616EF2E9172D5002ED050 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 91E616D42E9172D3002ED050 /* AvatarSpeaker */;
@@ -472,7 +491,28 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		50A98B772E91DA94006D15B6 /* XCRemoteSwiftPackageReference "ably-cocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ably/ably-cocoa";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.47;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
+		50A98B982E91E24D006D15B6 /* Ably */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 50A98B772E91DA94006D15B6 /* XCRemoteSwiftPackageReference "ably-cocoa" */;
+			productName = Ably;
+		};
+		50A98B9B2E91E284006D15B6 /* Ably */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 50A98B772E91DA94006D15B6 /* XCRemoteSwiftPackageReference "ably-cocoa" */;
+			productName = Ably;
+		};
 		91E616DA2E9172D3002ED050 /* RealityKitContent */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = RealityKitContent;

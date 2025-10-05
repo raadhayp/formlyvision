@@ -281,7 +281,7 @@ struct ContentView: View {
 
     // Load your video
     let player: AVPlayer = {
-        guard let url = Bundle.main.url(forResource: "hips_trial", withExtension: "mp4") else {
+        guard let url = Bundle.main.url(forResource: "frontraise", withExtension: "mp4") else {
             fatalError("Video not found")
         }
         let player = AVPlayer(url: url)
